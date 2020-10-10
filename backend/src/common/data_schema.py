@@ -35,3 +35,9 @@ attendance_schema = Schema({
     "year": str,
     "enrolled_date": str
 })
+
+extrafund_schema = Schema({
+    "extrafund_id": int,
+    "mmk_amount": float,
+    "tranfer_id": int
+})
