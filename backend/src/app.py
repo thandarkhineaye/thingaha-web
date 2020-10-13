@@ -15,7 +15,7 @@ def create_app():
     app.config.from_object(Config)
     db.init_app(app)
     Migrate(app, db, compare_type=True)
-    from models import user, student, school, address, transfer, attendance, donation, extrafund
+    from models import user, student, school, address, transfer, attendance, donation, extrafunds
     app.register_blueprint(api.api)
     return app
 
