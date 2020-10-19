@@ -15,7 +15,11 @@ Output Sample:
 {
     "data": {
         "extrafund": {
+<<<<<<< Updated upstream
             "mmk_amount": "30000",
+=======
+            "mmk_amount": "10000",
+>>>>>>> Stashed changes
             "transfer_id": "1"
         }
     }
@@ -34,11 +38,19 @@ Output Sample
         "count": 2,
         "extrafunds": [
             {
+<<<<<<< Updated upstream
                 "mmk_amount": "30000",
                 "transfer_id": "1"
             },
             {
                 "mmk_amount": "40000",
+=======
+                "mmk_amount": "10000",
+                "transfer_id": "1"
+            },
+            {
+                "mmk_amount": "30000",
+>>>>>>> Stashed changes
                 "transfer_id": "2"
             }
         ]
@@ -57,7 +69,11 @@ Output Sample
     "data": {
         "extrafund": {
             "mmk_amount": "30000",
+<<<<<<< Updated upstream
             "transfer_id": "1"
+=======
+            "transfer_id": "2"
+>>>>>>> Stashed changes
         }
     }
 }
@@ -71,7 +87,11 @@ Output Sample
 Input Sample:
 ```json
 {
+<<<<<<< Updated upstream
     "mmk_amount": "30000",
+=======
+    "mmk_amount": "50000",
+>>>>>>> Stashed changes
     "transfer_id": "1"
 }
 ```
