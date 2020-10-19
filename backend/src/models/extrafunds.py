@@ -85,8 +85,8 @@ class ExtrafundsModel(db.Model):
             target_extrafund = db.session.query(ExtrafundsModel).filter(ExtrafundsModel.id == extrafund_id).first()
             if not target_extrafund:
                 raise SQLCustomError("No record for requested address")
-            target_extrafund.division = extrafunds.division
-            target_extrafund.district = extrafunds.district
+            target_extrafund.mmk_amount = extrafunds.mmk_amount
+            target_extrafund.transfer_id = extrafunds.transfer_id
             db.session.commit()
             return True
         except SQLAlchemyError as error:
