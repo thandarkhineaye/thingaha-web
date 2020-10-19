@@ -36,7 +36,15 @@ attendance_schema = Schema({
     "enrolled_date": str
 })
 
+
 extrafunds_schema = Schema({
     "mmk_amount": float,
     "transfer_id": int
+})
+transfer_schema = Schema({
+    "year": int,
+    "month": str,
+    "total_mmk": int,
+    "total_jpy": int
+
 })
