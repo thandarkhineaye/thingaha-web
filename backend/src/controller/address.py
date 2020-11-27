@@ -124,3 +124,50 @@ def get_all_addresses():
     except SQLCustomError as error:
         current_app.logger.error("Fail to get all addresses: %s", error)
         return jsonify({"errors": [error.__dict__]}), 400
+
+
+'''
+Add Search API
+:Full Text Search By Township
+:Full Text Search By Street Address
+In Charge: Thandar Khine Aye
+Date    : 2020/11/27
+'''
+
+
+@api.route("/addresses/township_<str:township>", methods=["GET"])
+@jwt_required
+@cross_origin()
+def search_address_by_township(township: str):
+    """
+    full text search address by township
+    :return:
+    """
+    try:
+        current_app.logger.info("Search and get township: %s", township)
+        return jsonify({
+            "data": {
+                "user": address_service.search_address_by_township(township)
+            }}), 200
+    except SQLCustomError as error:
+        current_app.logger.error("Fail to search and get township: %s", township)
+        return jsonify({"errors": [error.__dict__]}), 400
+
+
+@api.route("/addresses/street_<str:street>", methods=["GET"])
+@jwt_required
+@cross_origin()
+def search_address_by_street(street: str):
+    """
+    full text search address by street
+    :return:
+    """
+    try:
+        current_app.logger.info("Search and get street: %s", street)
+        return jsonify({
+            "data": {
+                "user": address_service.search_address_by_street(street)
+            }}), 200
+    except SQLCustomError as error:
+        current_app.logger.error("Fail to search and get street: %s", street)
+        return jsonify({"errors": [error.__dict__]}), 400

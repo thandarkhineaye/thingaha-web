@@ -132,3 +132,47 @@ class AddressService(Service):
         :return:
         """
         return [address.as_dict() for address in addresses]
+
+    '''
+    Add Search API 
+    :Full Text Search By Township
+    :Full Text Search By Street Address
+    In Charge: Thandar Khine Aye
+    Date    : 2020/11/27
+    '''
+
+    def search_address_by_township(self, township: str) -> Dict[str, Any]:
+        """
+        full text search address by township
+        param : township
+        return : address info
+        """
+        self.logger.info("Search and Get address by street %s", township)
+        try:
+            address = AddressModel.search_address_by_township(township)
+            if not address:
+                raise SQLCustomError(
+                    description="No data for requested address Township: {}".format(township))
+            return address.as_dict()
+        except SQLAlchemyError:
+            self.logger.error(
+                "Get address by id fail. id %s. error %s", township, traceback.format_exc())
+            raise SQLCustomError(description="GET address by ID SQL ERROR")
+
+    def search_address_by_street(self, street: str) -> Dict[str, Any]:
+        """
+        full text search address by Street
+        param : Street
+        return : address info
+        """
+        self.logger.info("Search and Get address by street %s", street)
+        try:
+            address = AddressModel.search_address_by_street(street)
+            if not address:
+                raise SQLCustomError(
+                    description="No data for requested address Street: {}".format(street))
+            return address.as_dict()
+        except SQLAlchemyError:
+            self.logger.error(
+                "Search and Get address by id fail. id %s. error %s", street, traceback.format_exc())
+            raise SQLCustomError(description="GET address by ID SQL ERROR")

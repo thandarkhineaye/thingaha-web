@@ -141,3 +141,34 @@ class AddressModel(db.Model):
         except SQLAlchemyError as error:
             db.session.rollback()
             raise error
+
+    '''
+    Add Search API 
+    :Full Text Search By Township
+    :Full Text Search By Street Address
+    In Charge: Thandar Khine Aye
+    Date    : 2020/11/27
+    '''
+    @staticmethod
+    def search_address_by_township(township: str) -> AddressModel:
+        """
+        full text search address by township
+        :param township:
+        :return: address info
+        """
+        try:
+            return db.session.query(AddressModel).filter(AddressModel.township == township).first()
+        except SQLAlchemyError as error:
+            raise error
+
+    @staticmethod
+    def search_address_by_street(street: str) -> AddressModel:
+        """
+        full text search address by street address
+        :param street:
+        :return: address info
+        """
+        try:
+            return db.session.query(AddressModel).filter(AddressModel.street_address == street).first()
+        except SQLAlchemyError as error:
+            raise error
